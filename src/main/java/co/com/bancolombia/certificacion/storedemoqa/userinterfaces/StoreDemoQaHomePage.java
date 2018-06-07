@@ -9,5 +9,6 @@ import net.thucydides.core.annotations.DefaultUrl;
 @DefaultUrl("http://store.demoqa.com/")
 public class StoreDemoQaHomePage extends PageObject{
 	public static final Target BOTON_LOGIN = Target.the("Boton Login").located(By.id("account"));
+	public static final Target BOTON_CARRO_COMPRAS = Target.the("Boton Carro Compras").located(By.id("header_cart"));
 
 }
