@@ -9,6 +9,7 @@ import net.serenitybdd.screenplay.actions.Enter;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 import co.com.bancolombia.certificacion.storedemoqa.model.CredencialesAcceso;
+import co.com.bancolombia.certificacion.storedemoqa.model.Usuario;
 
 import static co.com.bancolombia.certificacion.storedemoqa.userinterfaces.StoreDemoQaLogin.*;
 
@@ -16,48 +17,28 @@ import static co.com.bancolombia.certificacion.storedemoqa.userinterfaces.StoreD
 
 public class Autenticar implements Task{
 
-	 //private final String usuario;
-	 //private final String password;
-	 private final CredencialesAcceso credencialesacceso;
+	 private final Usuario usuario;
 	 
-//	 public Autenticar(String usuario, String password) {
-//		 this.usuario = usuario;
-//		 this.password = password;
-//		 	 
-//	 }
 	
-	 public Autenticar(CredencialesAcceso credencialesAcceso) {
-		 this.credencialesacceso = credencialesAcceso;
+	 public Autenticar(Usuario usuario) {
+		 this.usuario = usuario;
 		 
 	 }
 	 
-//	 @Override
-//	public <T extends Actor> void performAs(T actor) {
-//		actor.attemptsTo(Click.on(BOTON_LOGIN),
-//						Enter.theValue(usuario).into(TEXTO_USUARIO),
-//						Enter.theValue(password).into(TEXTO_CONTRASEÑA),
-//						Click.on(BOTON_LOGIN)	
-//				);
-//		
-//	}
-
 	 
 	 @Override
 	public <T extends Actor> void performAs(T actor) {
 		actor.attemptsTo(Click.on(BOTON_LOGIN),
-						Enter.theValue(credencialesacceso.getUsuario()).into(TEXTO_USUARIO),
-						Enter.theValue(credencialesacceso.getPassword()).into(TEXTO_CONTRASEÑA),
+						Enter.theValue(usuario.getNombreUsuario()).into(TEXTO_USUARIO),
+						Enter.theValue(usuario.getContrasena()).into(TEXTO_CONTRASEÑA),
 						Click.on(BOTON_LOGIN)	
 				);
 		
 	}
 	 
-	public static Autenticar alUsuario(String usuario, String password) {
-		return instrumented(Autenticar.class, usuario, password );
-	}
 
-	public static Autenticar alUsuario(CredencialesAcceso credencialesAcceso) {
-		return instrumented(Autenticar.class,credencialesAcceso);
+	public static Autenticar alUsuario(Usuario usuario) {
+		return instrumented(Autenticar.class,usuario);
 	}
 	
 	

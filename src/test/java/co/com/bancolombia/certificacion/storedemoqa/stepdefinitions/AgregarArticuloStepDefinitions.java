@@ -3,7 +3,8 @@ package co.com.bancolombia.certificacion.storedemoqa.stepdefinitions;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
-import co.com.bancolombia.certificacion.storedemoqa.model.CredencialesAcceso;
+import static co.com.bancolombia.certificacion.storedemoqa.model.builder.UsuarioBuilder.conNombre;
+
 import co.com.bancolombia.certificacion.storedemoqa.questions.Detalle;
 import co.com.bancolombia.certificacion.storedemoqa.tasks.Agregar;
 import co.com.bancolombia.certificacion.storedemoqa.tasks.Autenticar;
@@ -29,11 +30,10 @@ public class AgregarArticuloStepDefinitions {
 	
 	@Dado("^que (.*) (.*) (.*) quiere agregar a su carrito productos$")
 	public void queCesarQuiereAgregarASuCarritoProductos(String nombreActor, String usuario, String password) {
-		theActorCalled(nombreActor).wasAbleTo(Open.browserOn(storedemoqahomepage),
-											//Autenticar.alUsuario(conNombre(usuario).ycontrasena(password))
-											//Autenticar.alUsuario(usuario,password)
-											Autenticar.alUsuario(new CredencialesAcceso(usuario, password))
-				);
+		theActorCalled(nombreActor).wasAbleTo(Open.browserOn(storedemoqahomepage)
+											,Autenticar.alUsuario(conNombre(usuario).ycontrasena(password))
+											);
+		//theActorCalled(nombreActor).wasAbleTo(Autenticar.alUsuario(conNombre(usuario).ycontrasena(password)));		
 	}
 
 	@Cuando("^el agrega un (.*) al carrito de compras$")
