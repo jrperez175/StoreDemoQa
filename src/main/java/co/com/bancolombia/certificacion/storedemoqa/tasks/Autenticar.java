@@ -27,7 +27,7 @@ public class Autenticar implements Task{
 	public <T extends Actor> void performAs(T actor) {
 		actor.attemptsTo(Click.on(BOTON_LOGIN),
 						Enter.theValue(usuario).into(TEXTO_USUARIO),
-						Enter.theValue(password).into(TEXTO_CONTRASEÑA),
+						Enter.theValue(password).into(TEXTO_CONTRASEÃ‘A),
 						Click.on(BOTON_LOGIN)	
 				);
 		
